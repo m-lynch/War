@@ -22,6 +22,12 @@ public final class Card
       this.suit = suit;
    }
    
+   public Card(Card another)
+   {
+      this.rank = another.rank;
+      this.suit = another.suit;
+   }
+   
    //This method returns the rank of the card
    public Rank getRank()
    {

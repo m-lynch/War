@@ -7,27 +7,27 @@ import java.util.Collections;
 
 public class PileOfCards
 {
-   public static  ArrayList<Card> pileOfCards;
+   public ArrayList<Card> cards = new ArrayList<Card>();
 
    public PileOfCards()
    {
-      pileOfCards = new ArrayList<Card>();
+      cards = null;
    }
    
    public void remove(Card c)
    {
-      pileOfCards.remove(c);
+      cards.remove(c);
    }
    
    public void add(Card c)
    {
-      pileOfCards.add(c);
+      cards.add(c);
    }
    
    public int size()
    {
       int num = 0;
-      for (Card C : pileOfCards)
+      for (Card C : cards)
       {
          num++;
       }
@@ -36,14 +36,14 @@ public class PileOfCards
    
    public Card get(int n)
    {
-      Card c = pileOfCards.get(n);
+      Card c = cards.get(n);
       return c;
    }
 
 
    public void printCards()
    {
-      for (Card C : pileOfCards)
+      for (Card C : cards)
       {
          System.out.println(C.getRank() + " of " + C.getSuit());
          

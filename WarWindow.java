@@ -20,6 +20,7 @@ public class WarWindow extends JFrame
    private PileOfCards CardsWon;
    private PileOfCards P1Cards;
    private PileOfCards P2Cards;
+   private PileOfCards discard;
 
    public WarWindow()
    {
@@ -43,9 +44,10 @@ public class WarWindow extends JFrame
       CardsWon = new PileOfCards();
       P1Cards = new PileOfCards();
       P2Cards = new PileOfCards();
+      
       WarDeck.shuffle();
       
-      WarDeck.printCards();    
+      //WarDeck.printCards();    
       System.out.println(WarDeck.size());
       
     //   while(WarDeck.size() > 0)
@@ -61,18 +63,11 @@ public class WarWindow extends JFrame
 //       }
 //       
 //       P1Cards.printCards();
-      this.dealDeck();
+      this.dealDeck(WarDeck,P1Cards,P2Cards);
       
       System.out.println(WarDeck.size());
       System.out.println(P1Cards.size());
       System.out.println(P2Cards.size());
-      
-      P1Cards.printCards();
-      System.out.println("**********************");
-    
-      
-      P2Cards.printCards();
-      
 
       
    }
@@ -97,21 +92,29 @@ public class WarWindow extends JFrame
       WarWindow window = new WarWindow();
    }
    
-   public void dealDeck()
+   public void dealDeck(Deck d, PileOfCards a, PileOfCards b)
    {
       int num = 0;
-      while (num<26)
+      while(num<26)
       {
-         if(num%2 == 0)
-         {
-            P1Cards.add(WarDeck.get(num));
-         }
-         else if(num%2 != 0)
-         {
-            P2Cards.add(WarDeck.get(num));
-         }
+         Card k = new Card(WarDeck.get(num));
+         a.add(k);
          num++;
-         
+         System.out.println("********" + num);
+         a.printCards();
+         System.out.println("////////////" + num);
+         b.printCards();
       }
+         
+
+      while(num>=26 && num< 52)
+      {
+         b.add(WarDeck.get(num));
+         num++;
+         System.out.println("********" + num);
+         b.printCards();
+
+      }
+               
    }
 }
